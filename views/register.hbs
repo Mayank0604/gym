@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Registration & Login</title>
+  <style>
+    /* Styling for the body */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Form container styles */
+    .form-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* Form styles */
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    label,
+    input {
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .form-group label {
+      flex: 1;
+      margin-right: 20px;
+      color: #000;
+      font-size: 16px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="password"],
+    .form-group input[type="checkbox"] {
+      flex: 2;
+      width: calc(100% - 20px);
+      padding: 10px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      font-size: 16px;
+      vertical-align: middle; /* Align elements vertically */
+    }
+
+    input[type="submit"] {
+      padding: 12px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #00bcd4;
+    }
+
+    .form-title {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+      font-size: 28px;
+    }
+
+    .terms-text {
+      font-size: 14px;
+      color: #555;
+      display: flex;
+      align-items: center;
+    }
+
+    .terms-text input[type="checkbox"] {
+      margin-right: 5px;
+      margin-top: 12px; /* Adjust vertical alignment */
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1 class="form-title">User Registration</h1>
+    <form id="registerForm" action="/register" method="POST">
+      <div class="form-group">
+        <label for="regUsername">Username:</label>
+        <input type="text" id="regUsername" name="firstname" required>
+      </div>
+
+      <div class="form-group">
+        <label for="regEmail">Email:</label>
+        <input type="email" id="regEmail" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="regPassword">Password:</label>
+        <input type="password" id="regPassword" name="password" required>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmpassword" required>
+      </div>
+
+      <div class="form-group">
+        <label class="terms-text">
+          <input type="checkbox" id="agreeTerms" required>
+          I agree to the terms and conditions
+        </label>
+      </div>
+
+      <input type="submit" value="Register">
+    </form>
+    <p style="text-align: center; margin-top: 10px;">Already have an account? <a href="/login">Sign In</a></p>
+  </div>
+</body>
+</html>

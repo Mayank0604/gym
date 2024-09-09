@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./static/css/main.css">
+    <style>
+        a {
+    text-decoration: none;
+}
+
+.container {
+    width: 350px;
+    height: 500px;
+    background: #333;
+    box-shadow: 10px 20px 20px 0 rgba(0, 0, 0, 0.4), -10px 20px 20px 0 rgba(0, 0, 0, 0.4), 0 -2px 20px 0 rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.signin-signup {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+/* Style the forms and hide the sign-up form initially */
+form {
+    grid-column: 1 / 2;
+    grid-row: 1/2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+form.sign-up-form {
+    visibility: hidden;
+}
+
+/* Style form titles, input fields, icons, and buttons */
+.title {
+    font-size: 35px;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+.input-field {
+    width: 280px;
+    height: 50px;
+    border-bottom: 2px solid #999;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.input-field i {
+    flex: 1;
+    text-align: center;
+    font-size: 20px;
+    color: #999;
+}
+
+.input-field input {
+    flex: 5;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 18px;
+    color: #f0f0f0;
+    font-weight: 600;
+}
+
+/* Style paragraphs and links */
+p,
+a {
+    font-size: 14px;
+    color: #999;
+}
+
+.forgot-password {
+    align-self: flex-end;
+}
+
+.btn {
+    width: 130px;
+    height: 40px;
+    background: none;
+    outline: none;
+    border: 2px solid #999;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 20px 0;
+    color: #999;
+}
+
+.btn:hover {
+    color: #333;
+    border: none;
+    background: #999;
+}
+
+.account-text {
+    color: #f0f0f0;
+}
+
+/* Make the sign-up form visible when in sign-up mode */
+.container.sign-up-mode form.sign-up-form {
+    visibility: visible;
+}
+
+/* Hide the sign-in form when in sign-up mode */
+.container.sign-up-mode form.sign-in-form {
+    visibility: hidden;
+}
+/* Adjust container styles for smaller screens */
+@media (max-width: 400px) {
+    .container {
+        width: 100vw;
+        height: 100vh;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="nav-wrapper">
+         <div class="grad-bar"></div>
+         <nav class="navbar">
+           <img src="/static/images/logo.png" width="1000" alt="Company Logo">
+           <div class="menu-toggle" id="mobile-menu">
+             <span class="bar"></span>
+             <span class="bar"></span>
+             <span class="bar"></span>
+           </div>
+           <ul class="nav no-search">
+             <li class="nav-item"><a href="index.html">Home</a></li>
+             <li class="nav-item"><a href="about.html">About</a></li>
+             <li class="nav-item"><a href="#">Work</a></li>
+             <li class="nav-item"><a href="#" onclick="openModal()">Login</a></li>
+             <li class="nav-item"><a href="#">Exercises</a></li>
+             <i class="fas fa-search" id="search-icon"></i>
+             <input class="search-input" type="text" placeholder="Search..">
+           </ul>
+         </nav>
+         </div>
+         <section class="headline">
+           <h1>Welcome</h1>
+           <p>To NikMay Fitness</p>
+           </section>
+         <section class="features">
+           <div class="feature-container">
+            <a href="yoga.html">
+              <img src="/static/images/yoga.jpg" target= alt="Flexbox Feature">
+              </a>
+             <h2>Yoga</h2>
+             <p>recognizing a detached witness-consciousness untouched by the mind and mundane suffering.</p>
+           </div>
+           <div class="feature-container">
+            <a href="exercisemain.html">
+             <img src="/static/images/workout.jpg" alt="Flexbox Feature"></a>
+             <h2>Work out</h2>
+             <p>Exercise strengthens your heart and improves your circulation. The increased blood flow raises the oxygen levels in your body.</p>
+           </div>
+           <div class="feature-container">
+             <a href="diet.html">
+             <img src="/static/images/dietbg.jpg" alt="Flexbox Feature">
+             <h2>Diet</h2>
+             <p>The diet plan for people who workout daily. </p>
+             </a>
+           </div>
+         </section>
+       </div>
+
+
+       <footer>
+        <p>&copy;Copyright tiwariboy</p>
+    </footer>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close-btn" onclick="closeModal()">&times;</span>
+          <div class="container">
+            <div class="signin-signup">
+                <!-- Sign-in Form -->
+                <form action="" class="sign-in-form">
+                    <h2 class="title">Sign in</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Username">
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password">
+                    </div>
+                    <a href="dash.html" class="forgot-password">Forgot password?</a>
+                    <input type="submit" value="Login" class="btn">
+                    <p>Don't have an account? <a href="#" class="account-text" id="sign-up-link">Sign up</a></p>
+                </form>
+                <!-- Sign-up Form -->
+                <form action="" class="sign-up-form">
+                    <h2 class="title">Sign up</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Username">
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="text" placeholder="Email">
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password">
+                    </div>
+                    <input type="submit" value="Sign up" class="btn">
+                    <p>Already have an account? <a href="#" class="account-text" id="sign-in-link">Sign in</a></p>
+                </form>
+            </div>
+        </div>
+            
+        </div>
+        </div>
+      </div>
+      <script>
+        function validateForm() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            if (username === 'admin' && password === 'adminpassword') {
+                alert('Admin login successful!');
+                return false;
+            } else {
+                alert('Invalid username or password. Please try again.');
+                return false; 
+            }
+        }
+    </script>
+    <script>
+        const sign_in_link = document.querySelector("#sign-in-link");
+const sign_up_link = document.querySelector("#sign-up-link");
+const container = document.querySelector(".container");
+
+sign_up_link.addEventListener("click", () => {
+    container.classList.add("sign-up-mode");
+})
+
+sign_in_link.addEventListener("click", () => {
+    container.classList.remove("sign-up-mode");
+})
+    </script>
+
+      <script>
+        function openModal() {
+          document.getElementById('myModal').style.display = 'flex';
+        }
+      
+        function closeModal() {
+          document.getElementById('myModal').style.display = 'none';
+        }
+        window.onclick = function(event) {
+          var modal = document.getElementById('myModal');
+          if (event.target == modal) {
+            closeModal();
+          }
+        }
+      
+      </script>
+</body>
+</html>

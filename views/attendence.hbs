@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Attendance Calendar</title>
+  <style>
+    /* Your CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .calendar {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    caption {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    thead th {
+      background-color: #f0f0f0;
+      padding: 10px;
+      text-align: center;
+    }
+
+    td {
+      padding: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    td:hover {
+      background-color: #f0f0f0;
+    }
+
+    td.inactive {
+      color: #ccc;
+      cursor: default;
+    }
+
+    td.present {
+      background-color: #7bc043;
+      color: white;
+      font-weight: bold;
+    }
+
+    .month-slider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .month-slider button {
+      background: none;
+      border: none;
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+
+    .month-name {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin: 0 20px;
+    }
+
+    /* Styling for the Save Attendance button */
+    #saveAttendance {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      background-color: #3498db;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #saveAttendance:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <h1>User Attendance Calendar</h1>
+
+  <div class="month-slider">
+    <button id="prevMonth">&lt;</button>
+    <span class="month-name">2023-2024</span>
+    <button id="nextMonth">&gt;</button>
+  </div>
+
+  <form id="attendance" action="/dash" method="get">
+    <div class="calendar">
+      <table>
+        <caption id="calendarCaption">January 2023</caption>
+        <thead>
+          <tr>
+            <th>Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+          </tr>
+        </thead>
+        <tbody id="calendarBody">
+          <!-- JavaScript will generate the calendar cells here -->
+        </tbody>
+      </table>
+    </div>
+
+    <button id="saveAttendance">Save Attendance</button>
+  </form>
+
+  <script>
+    let currentMonth = 0;
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    let attendanceData = {};
+
+    function markAttendance(cell) {
+      const day = parseInt(cell.textContent);
+
+      if (!attendanceData[currentMonth]) {
+        attendanceData[currentMonth] = {};
+      }
+      attendanceData[currentMonth][day] = !attendanceData[currentMonth][day];
+
+      cell.classList.toggle('present');
+
+      if (attendanceData[currentMonth][day]) {
+        cell.textContent = '✔';
+      } else {
+        cell.textContent = day;
+      }
+    }
+
+    function daysInMonth(month, year) {
+      return new Date(year, month + 1, 0).getDate();
+    }
+
+    function generateCalendar(monthIndex) {
+      const calendarBody = document.getElementById('calendarBody');
+      const calendarCaption = document.getElementById('calendarCaption');
+      const year = new Date().getFullYear();
+      const daysCount = daysInMonth(monthIndex, year);
+
+      calendarBody.innerHTML = '';
+
+      let day = 1;
+
+      for (let i = 0; i < 5; i++) {
+        const row = document.createElement('tr');
+
+        for (let j = 0; j < 7; j++) {
+          const cell = document.createElement('td');
+          if (day <= daysCount) {
+            cell.textContent = day;
+            cell.addEventListener('click', function() {
+              markAttendance(this);
+            });
+
+            if (attendanceData[currentMonth] && attendanceData[currentMonth][day]) {
+              cell.classList.add('present');
+              cell.textContent = '✔';
+            }
+
+            day++;
+          } else {
+            cell.textContent = '-';
+            cell.classList.add('inactive');
+          }
+          row.appendChild(cell);
+        }
+
+        calendarBody.appendChild(row);
+      }
+
+      calendarCaption.textContent = monthNames[monthIndex];
+    }
+
+    document.getElementById('prevMonth').addEventListener('click', function() {
+      currentMonth = (currentMonth - 1 + 12) % 12;
+      generateCalendar(currentMonth);
+    });
+
+    document.getElementById('nextMonth').addEventListener('click', function() {
+      currentMonth = (currentMonth + 1) % 12;
+      generateCalendar(currentMonth);
+    });
+
+    document.getElementById('saveAttendance').addEventListener('click', async function() {
+      try {
+        const attendanceDataToSend = generateAttendanceData();
+        if (!attendanceDataToSend) {
+          console.error('Error generating attendance data.');
+          return;
+        }
+
+        const response = await saveAttendance(attendanceDataToSend);
+        console.log('Attendance saved successfully:', response);
+      } catch (error) {
+        console.error('Error marking attendance:', error);
+      }
+    });
+
+    function generateAttendanceData() {
+      const userId = getUserId();
+      const currentYear = new Date().getFullYear();
+      const monthIndex = currentMonth;
+      const attendanceData = {
+        user_id: userId,
+        year: currentYear,
+        attendance: []
+      };
+
+      const calendarCells = document.querySelectorAll('#calendarBody td');
+      const monthAttendance = {
+        month: monthIndex + 1,
+        days: []
+      };
+
+      calendarCells.forEach(cell => {
+        const day = parseInt(cell.textContent);
+        const status = cell.classList.contains('present') ? 'present' : 'absent';
+
+        if (!isNaN(day)) {
+          monthAttendance.days.push({ day, status });
+        }
+      });
+
+      if (monthAttendance.days.length > 0) {
+        attendanceData.attendance.push(monthAttendance);
+        return attendanceData;
+      }
+
+      return null;
+    }
+
+    async function saveAttendance(attendanceData) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          const attendanceId = getUserId();
+          resolve({ attendanceId });
+        }, 1000);
+      });
+    }
+
+    async function getUserId() {
+      try {
+        const response = await fetch('/api/userdata', {
+          method: 'GET',
+          credentials: 'same-origin'
+        });
+
+        if (response.ok) {
+          const userData = await response.json();
+          const userId = userData._id;
+          return userId;
+        } else {
+          throw new Error('User data retrieval failed');
+        }
+      } catch (error) {
+        console.error('Error retrieving user data:', error);
+        return null;
+      }
+    }
+
+    async function processUserData() {
+      const userId = await getUserId();
+      if (userId) {
+        console.log('User ID:', userId);
+      } else {
+        console.log('User ID retrieval failed.');
+      }
+    }
+
+    processUserData();
+    generateCalendar(currentMonth);
+  </script>
+</body>
+</html>

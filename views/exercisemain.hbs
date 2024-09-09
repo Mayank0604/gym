@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise And Machine</title>
+
+    <style>
+        /* Add your CSS styles here */
+        body {
+            background-image: url("/static/images/main.jpg");
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .product {
+            display: flex;
+            justify-content: space-between;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            max-width: 50%;
+        }
+
+        .product-info {
+            max-width: 48%;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .page-wrapper {
+    width: 100%;
+    height: auto;
+  }
+  
+  .nav-wrapper {
+    width: 100%;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+  }
+  
+  .grad-bar {
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+    background-size: 400% 400%;
+      -webkit-animation: gradbar 15s ease infinite;
+    -moz-animation: gradbar 15s ease infinite;
+    animation: gradbar 15s ease infinite;
+  }
+  
+  /* NAVIGATION */
+  
+  .navbar {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+    height: 50px;
+    overflow: hidden;
+  }
+  
+  .navbar img {
+    height: 50px;
+    width: auto;
+    justify-self: start;
+    margin-left: 50px;
+  }
+  
+  .navbar ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    justify-self: end;
+    
+  }
+  
+  .nav-item a {
+    color: #000;
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-decoration: none;
+    transition: color 0.3s ease-out;
+  }
+  
+  .nav-item a:hover {
+    color: #3498db;
+  }
+  
+  /* SECTIONS */
+  
+  .headline {
+    width: 100%;
+    height: 50vh;
+    min-height: 350px;
+    background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.7)), url('back.jpg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .features {
+    width: 100%;
+    height: auto;
+    background-color: #f1f1f1;
+    display: flex;
+    padding: 50px 20px;
+    justify-content: space-around;
+  }
+  
+  .feature-container {
+    flex-basis: 30%;
+    margin-top: 10px;
+  }
+  
+  .feature-container p {
+    color: #000;
+    text-align: center;
+    line-height: 1.4;
+    margin-bottom: 15px;
+  }
+  
+  .feature-container img {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  /* SEARCH FUNCTION */
+  
+  #search-icon {
+    font-size: 0.9rem;
+    margin-top: 3px;
+    margin-left: 15px;
+    transition: color 0.3s ease-out;
+  }
+  
+  #search-icon:hover {
+    color: #3498db;
+    cursor: pointer;
+  }
+  
+  .search {
+    transform: translate(-35%);
+    -webkit-transform: translate(-35%);
+    transition: transform 0.7s ease-in-out;
+    color: #3498db;
+  }
+  
+  .no-search {
+    transform: translate(0);
+    transition: transform 0.7s ease-in-out;
+  }
+  
+  .search-input {
+    position: absolute;
+    top: -4px;
+    right: -125px;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.6s ease;
+  }
+  
+  .search-active {
+    opacity: 1;
+    z-index: 0;
+  }
+  
+  input {
+    border: 0;
+    border-left: 1px solid #ccc;
+    border-radius: 0; /* FOR SAFARI */
+    outline: 0;
+    padding: 5px;
+  }
+  
+  /* MOBILE MENU & ANIMATION */
+  
+  .menu-toggle .bar{
+    width: 25px;
+    height: 3px;
+    background-color: #3f3f3f;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .menu-toggle {
+    justify-self: end;
+    margin-right: 25px;
+    display: none;
+  }
+  
+  .menu-toggle:hover{
+    cursor: pointer;
+  }
+  
+  #mobile-menu.is-active .bar:nth-child(2){
+    opacity: 0;
+  }
+  
+  #mobile-menu.is-active .bar:nth-child(1){
+    -webkit-transform: translateY(8px) rotate(45deg);
+    -ms-transform: translateY(8px) rotate(45deg);
+    -o-transform: translateY(8px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  #mobile-menu.is-active .bar:nth-child(3){
+    -webkit-transform: translateY(-8px) rotate(-45deg);
+    -ms-transform: translateY(-8px) rotate(-45deg);
+    -o-transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+#heading{
+    background-color: white;
+}
+
+
+
+
+
+
+.modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    .close-btn {
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+  
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <div class="nav-wrapper">
+         <div class="grad-bar"></div>
+         <nav class="navbar">
+           <img src="/static/images/logo.png" width="1000" alt="Company Logo">
+           <div class="menu-toggle" id="mobile-menu">
+             <span class="bar"></span>
+             <span class="bar"></span>
+             <span class="bar"></span>
+           </div>
+           <ul class="nav no-search">
+             <li class="nav-item"><a href="#">Home</a></li>
+             <li class="nav-item"><a href="#">About</a></li>
+             <li class="nav-item"><a href="#">Work</a></li>
+             <li class="nav-item"><a href="#" onclick="openModal()">Login</a></li>
+             <li class="nav-item"><a href="#">Exercises</a></li>
+             <i class="fas fa-search" id="search-icon"></i>
+             <input class="search-input" type="text" placeholder="Search..">
+           </ul>
+         </nav>
+        </div>
+<div>
+    <div class="heading">
+        <h1>
+            <center>
+            Machines and Exercises
+        </center>
+        </h1>
+    </div>
+</div>
+    <div class="container">
+        <div class="product">
+            <div class="product-image">
+                <img src="/static/images/chest-press.jpg"width=400px alt="Product Image">
+            </div>
+            <div class="product-info">
+                <h1>Chest fly</h1>
+                <p>The chest fly machine is often overlooked in the weight room because there are so many different ways to work the chest (pectoralis) muscles. For example, you can do a chest fly with dumbbells or by using cables</p>
+                <p>Exercieses: Chest, Back</p>
+                <p>Type: cable</p>
+                <button onclick="openModal()">Details</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="product">
+            <div class="product-image">
+                <img src="/static/images/leg extenstion.jpg"width=300px alt="Product Image">
+            </div>
+            <div class="product-info">
+                <h1>Leg Extension</h1>
+                <p>The leg press allows you to lift heavy weights with your legs to build strength, without your spine needing to support the movement like you would in a heavy squat, meaning a reduced risk of injury or poor form. </p>
+                <p>Reps 3 X 10 (60 seconds) </p>
+                <p>Exercise: leg</p>
+                <p>Type: Cable</p>
+                <button onclick="openModal()">Details</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="product">
+            <div class="product-image">
+                <img src="/static/images/biceps curl.jpg"width=400px alt="Product Image">
+            </div>
+            <div class="product-info">
+                <h1>Biceps curl</h1>
+                <p>Sit down in the seat and place the back of your arms on the pad in front of you.</p>
+                <p>Exercise: Biceps</p>
+                <p>Type: cable</p>
+                <button onclick="openModal()">Details</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="product">
+            <div class="product-image">
+                <img src="/static/images/bicycle.jpg"width=300px alt="Product Image">
+            </div>
+            <div class="product-info">
+                <h1>Bicycle</h1>
+                <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Exercise: Warmup , Leg</p>
+                <p>Type: cycle</p>
+                <button onclick="openModal()">Details</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="product">
+            <div class="product-image">
+                <img src="/static/images/treadmill.jpg"width=400px alt="Product Image">
+            </div>
+            <div class="product-info">
+                <h1>Trademill</h1>
+                <p>generally used for walking, running, or climbing while staying in the same place</p>
+                <p>Exercise: Warmup , Leg</p>
+                <p>Type:Chain,Electric</p>
+                <button onclick="openModal()">Details</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="product">
+            <div class="product-image">
+                <img src="/static/images/benchpress.jpg"width=400px alt="Product Image">
+            </div>
+            <div class="product-info">
+                <h1>Bench Press</h1>
+                <p>A bench press is an exercise that can be used to strengthen the muscles of the upper body, including the pectorals, arms, and shoulders.</p>
+                <p>Exercise: Chest</p>
+                <p>Type: Rod and plates</p>
+                <button onclick="openModal()">Details</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="product">
+            <div class="product-image">
+                <img src="/static/images/inclinebench.jpg"width=400px alt="Product Image">
+            </div>
+            <div class="product-info">
+                <h1>Incline Bench</h1>
+                <p>The incline bench press is a variation of the bench press and an exercise used to build the muscles of the chest. The shoulders and triceps will be indirectly involved as well.</p>
+                <p>Exercise: Chest</p>
+                <p>Type: Rod and plates</p>
+                <button onclick="openModal()">Details</button>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="product">
+            <div class="product-image">
+                <img src="/static/images/smithmachine.jpg"width=400px alt="Product Image">
+            </div>
+            <div class="product-info">
+                <h1>Smith Machine</h1>
+                <p id="description">The Smith machine is a vertical bar that moves within fixed steel rails. It’s an alternative to using free weights or barbells and can feel safer for those who are new to lifting due to the support of the rails, which prevent you from swaying forward or back. The Smith machine can be used for exercises such as squats, a bench press, shoulder press, deadlifts and split squats. </p>
+                <p>Exercise: Chest,Back,Leg</p>
+                <p>Type: Rod and Plates</p>
+                <button onclick="openModal()">Details</button>
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <p>This is a modal window.Nothing to display we will lauch something soon here.</p>
+      </div>
+    </div>
+</body>
+<script>
+  function openModal() {
+    document.getElementById('myModal').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('myModal').style.display = 'none';
+  }
+
+  // Close modal if the user clicks outside of it
+  window.onclick = function(event) {
+    var modal = document.getElementById('myModal');
+    if (event.target == modal) {
+      closeModal();
+    }
+  }
+
+</script>
+
+</html>

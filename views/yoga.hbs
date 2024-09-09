@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga Website</title>
+    <link rel="stylesheet" href="./static/css/main.css">
+    <style>
+        body{
+            background-image: url("/static/images/yogabg.jpg");
+        }
+        
+    section {
+      padding: 20px;
+    }
+
+    .product {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 15px;
+      margin: 10px;
+      text-align: center;
+      background-color: gray;
+      display: inline-block;
+      width: 30%;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    </style>
+</head>
+<body>
+    <div class="nav-wrapper">
+        <div class="grad-bar"></div>
+        <nav class="navbar">
+          <img src="/static/images/logo.png" width="1000" alt="Company Logo">
+          <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <ul class="nav no-search">
+            <li class="nav-item"><a href="index.html">Home</a></li>
+            <li class="nav-item"><a href="about.html">About</a></li>
+            <li class="nav-item"><a href="#">Work</a></li>
+            <li class="nav-item"><a href="#" onclick="openModal()">Login</a></li>
+            <li class="nav-item"><a href="#">Exercises</a></li>
+            <i class="fas fa-search" id="search-icon"></i>
+            <input class="search-input" type="text" placeholder="Search..">
+          </ul>
+        </nav>
+        </div>
+    <header>
+        <h1>Yoga Studio</h1>
+    </header>
+
+    <section>
+        <div class="product">
+          <h2>Pranayam</h2>
+          <img src="/static/images/pranayam.png">
+          <p>Pranayama is the yogic practice of focusing on breath.</p>
+          <button onclick="openModal()">click</button>
+        </div>
+        <div class="product">
+            <h2>Dhanurasana</h2>
+            <img src="/static/images/dhanuras.jpg" width="200">
+            <p>Description</p>
+            <button onclick="openModal()">click</button>
+          </div>
+        
+
+          <div class="product">
+            <h2>Bhujangasana</h2>
+            <img src="/static/images/bhujang.jpg" width="300px">
+            <p>Description</p>
+            <button onclick="openModal()">click</button>
+          </div>
+
+          <div class="product">
+            <h2>Trikosasana</h2>
+            <img src="/static/images/trikosasana.jpg" width="250px">
+            <p>Description</p>
+            <button onclick="openModal()">click</button>
+          </div>
+
+          <div class="product">
+            <h2>Vrikshasana</h2>
+            <img src="/static/images/vriksh.png">
+            <p>Description</p>
+            <button onclick="openModal()">click</button>
+          </div>
+
+          <div class="product">
+            <h2>Sarvagyasana</h2>
+            <img src="/static/images/sarvagya.jpeg" width="380px">
+            <p>Description</p>
+            <button onclick="openModal()">click</button>
+          </div>
+
+          <div class="product">
+            <h2>Vrikshasana</h2>
+            <img src="/static/images/vriksh.png">
+            <p>Description</p>
+            <button onclick="openModal()">click</button>
+          </div>
+
+          <div class="product">
+            <h2>Vrikshasana</h2>
+            <img src="/static/images/vriksh.png">
+            <p>Description</p>
+            <button onclick="openModal()">click</button>
+          </div>
+
+          <div class="product">
+            <h2>Vrikshasana</h2>
+            <img src="/static/images/vriksh.png">
+            <p>Description</p>
+            <button onclick="openModal()">click</button>
+          </div>
+    
+        <!-- Add more products as needed -->
+    
+      </section>
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close-btn" onclick="closeModal()">&times;</span>
+          <p>Pranayam</p>
+          <img src="/static/images/pranayam.png">
+          <p>Pranayam is position in yoga </p>
+        </div>
+      </div>
+
+
+    <footer>
+        <p>&copy; 2023 Yoga Studio</p>
+    </footer>
+
+
+    <script>
+      function openModal() {
+        document.getElementById('myModal').style.display = 'flex';
+      }
+    
+      function closeModal() {
+        document.getElementById('myModal').style.display = 'none';
+      }
+      window.onclick = function(event) {
+        var modal = document.getElementById('myModal');
+        if (event.target == modal) {
+          closeModal();
+        }
+      }
+    
+    </script>
+</body>
+</html>

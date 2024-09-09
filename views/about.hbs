@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+.body{
+    width: 100%;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+.header {
+  padding: 5px;
+  text-align: center;   
+  color: skyblue;
+font-family: 'Lora', serif;
+
+}
+
+#top{
+     background-color: whitesmoke;
+    color: aliceblue;
+   
+}
+
+.column-left {
+  float: left;
+  width: 16.66%;
+  height: 1500px;
+   background-color: skyblue;
+   border: black;
+}
+
+
+.column-middle{
+    
+    float: left;
+    width: 83.34%;
+    background-color: white;
+    
+    
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  clear: both;
+}
+
+.column{
+    width: 100%;
+   
+    background-color: silver;
+    text-align: center;
+    display: grid;
+}
+
+.header img {
+    margin: auto;
+    width: 472px;
+    height: 96px; 
+    box-sizing: content-box;
+}
+
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+.navbar {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    align-items: center;
+    height: 50px;
+    overflow: hidden;
+  }
+  
+  .navbar img {
+    height: 50px;
+    width: auto;
+    justify-self: start;
+    margin-left: 50px;
+  }
+  
+  .navbar ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    justify-self: end;
+    
+  }
+  
+  .nav-item a {
+    color: #000;
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-decoration: none;
+    transition: color 0.3s ease-out;
+  }
+  
+  .nav-item a:hover {
+    color: #3498db;
+  }
+  
+  /* SECTIONS */
+  
+  .headline {
+    width: 100%;
+    height: 50vh;
+    min-height: 350px;
+    background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.7)), url('back.jpg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .features {
+    width: 100%;
+    height: auto;
+    background-color: #f1f1f1;
+    display: flex;
+    padding: 50px 20px;
+    justify-content: space-around;
+  }
+  
+  .feature-container {
+    flex-basis: 30%;
+    margin-top: 10px;
+  }
+  
+  .feature-container p {
+    color: #000;
+    text-align: center;
+    line-height: 1.4;
+    margin-bottom: 15px;
+  }
+  
+  .feature-container img {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  /* SEARCH FUNCTION */
+  
+  #search-icon {
+    font-size: 0.9rem;
+    margin-top: 3px;
+    margin-left: 15px;
+    transition: color 0.3s ease-out;
+  }
+  
+  #search-icon:hover {
+    color: #3498db;
+    cursor: pointer;
+  }
+  
+  .search {
+    transform: translate(-35%);
+    -webkit-transform: translate(-35%);
+    transition: transform 0.7s ease-in-out;
+    color: #3498db;
+  }
+  
+  .no-search {
+    transform: translate(0);
+    transition: transform 0.7s ease-in-out;
+  }
+  
+  .search-input {
+    position: absolute;
+    top: -4px;
+    right: -125px;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.6s ease;
+  }
+  
+  .search-active {
+    opacity: 1;
+    z-index: 0;
+  }
+  
+  input {
+    border: 0;
+    border-left: 1px solid #ccc;
+    border-radius: 0; /* FOR SAFARI */
+    outline: 0;
+    padding: 5px;
+  }
+  
+  /* MOBILE MENU & ANIMATION */
+  
+  .menu-toggle .bar{
+    width: 25px;
+    height: 3px;
+    background-color: #3f3f3f;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .menu-toggle {
+    justify-self: end;
+    margin-right: 25px;
+    display: none;
+  }
+  
+  .menu-toggle:hover{
+    cursor: pointer;
+  }
+  
+  #mobile-menu.is-active .bar:nth-child(2){
+    opacity: 0;
+  }
+  
+  #mobile-menu.is-active .bar:nth-child(1){
+    -webkit-transform: translateY(8px) rotate(45deg);
+    -ms-transform: translateY(8px) rotate(45deg);
+    -o-transform: translateY(8px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  #mobile-menu.is-active .bar:nth-child(3){
+    -webkit-transform: translateY(-8px) rotate(-45deg);
+    -ms-transform: translateY(-8px) rotate(-45deg);
+    -o-transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+#heading{
+    background-color: white;
+}
+  
+
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="nav-wrapper">
+         <div class="grad-bar"></div>
+         <nav class="navbar">
+           <img src="/static/images/logo.png" width="1000" alt="Company Logo">
+           <div class="menu-toggle" id="mobile-menu">
+             <span class="bar"></span>
+             <span class="bar"></span>
+             <span class="bar"></span>
+           </div>
+           <ul class="nav no-search">
+             <li class="nav-item"><a href="#">Home</a></li>
+             <li class="nav-item"><a href="#">About</a></li>
+             <li class="nav-item"><a href="#">Work</a></li>
+             <li class="nav-item"><a href="#">Careers</a></li>
+             <li class="nav-item"><a href="#">Contact Us</a></li>
+             <i class="fas fa-search" id="search-icon"></i>
+             <input class="search-input" type="text" placeholder="Search..">
+           </ul>
+         </nav>
+         </div>
+    
+    <div class="about-section">
+        <h1>About Us Page</h1>
+        <p> The Gym Management System Website is a comprehensive digital solution designed to streamline and enhance the operations of fitness centers and gyms. This web-based platform serves as an all-in-one management tool, offering a wide range of features to benefit gym owners, staff, and members alike. Key functionalities include member registration and management, class and schedule management and communication tools.
+          Gym owners and staff benefit from efficient member management, including attendance tracking, personalized workout plans, and automated alerts for membership renewals.
+          In addition to member-focused features, the Gym Management System Website provides tools for scheduling classes, managing trainers, and monitoring equipment maintenance. These features facilitate efficient day-to-day operations and contribute to an excellent member experience.
+          Furthermore, the system prioritizes data security, ensuring the confidentiality of member information. With the ability to generate detailed reports, gym owners can make data-driven decisions to improve their services and profitability.</p>
+        <p>Resize the browser window to see that this page is responsive by the way.</p>
+      </div>
+      
+      <h2 style="text-align:center">Our Team</h2>
+      <div class="row">
+        <div class="column">
+          <div class="card">
+            <img src=""  style="width:100%">
+            <div class="container">
+              <h2>Mayank Kumar</h2>
+              <p class="title">Data Scientist</p>
+              <p>Made The presentation of our website </p>
+              <p>mayank kumar.com</p>
+              <p><button class="button">Contact</button></p>
+            </div>
+          </div>
+        </div>
+      
+        <div class="column">
+          <div class="card">
+            <img src="" style="width:30%">
+            <div class="container">
+              <h2>Nikhil Tiwari</h2>
+              <p class="title">Web Developer</p>
+              <p>Developed the Frontend of Website
+              </p>
+              <p>tiwarinikhil.com</p>
+              <p><button class="button">Contact</button></p>
+            </div>
+          </div>
+        </div>
+      
+        <div class="column">
+          <div class="card">
+            <img src="" style="width:30%">
+            <div class="container">
+              <h2>Nikhil Singh</h2>
+              <p class="title">Designer</p>
+              <p>Designed the website.</p>
+              <p>nikhilsingh.com</p>
+              <p><button class="button">Contact</button></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+</body>
+</html>

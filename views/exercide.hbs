@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./static/css/main.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="nav-wrapper">
+         <div class="grad-bar"></div>
+         <nav class="navbar">
+           <img src="/static/images/logo.png" width="1000" alt="Company Logo">
+           <div class="menu-toggle" id="mobile-menu">
+             <span class="bar"></span>
+             <span class="bar"></span>
+             <span class="bar"></span>
+           </div>
+           <ul class="nav no-search">
+             <li class="nav-item"><a href="#">Home</a></li>
+             <li class="nav-item"><a href="#">About</a></li>
+             <li class="nav-item"><a href="#">Work</a></li>
+             <li class="nav-item"><a href="#">Careers</a></li>
+             <li class="nav-item"><a href="#">Contact Us</a></li>
+             <i class="fas fa-search" id="search-icon"></i>
+             <input class="search-input" type="text" placeholder="Search..">
+           </ul>
+         </nav>
+         </div>
+         <div class="row">
+            <div class="column">
+              <img src="/static/images/images.jpg" alt="Nature" onclick="myFunction(this);">
+            </div>
+            <div class="column">
+              <img src="/static/images/Warm.jpg" width="200" alt="Snow" onclick="myFunction(this);">
+            </div>
+            <div class="column">
+              <img src="/static/images/benchpress.jpg" width="200" alt="Mountains" onclick="myFunction(this);">
+            </div>
+            <div class="column">
+              <img src="/static/images/treadmill.jpg" width="200" alt="Lights" onclick="myFunction(this);">
+            </div>
+            <div class="column">
+                <img src="/static/images/leg extenstion.jpg" alt="Nature" onclick="myFunction(this);">
+              </div>
+              <div class="column">
+                <img src="/static/images/smithmachine.jpg" width="200" alt="Snow" onclick="myFunction(this);">
+              </div>
+              <div class="column">
+                <img src="/static/images/bicycle.jpg" width="200" alt="Mountains" onclick="myFunction(this);">
+              </div>
+              <div class="column">
+                <img src="/static/images/inclinebench.jpg" width="200" alt="Lights" onclick="myFunction(this);">
+              </div>
+              <div class="column">
+                <img src="/static/images/benchpress.jpg" width="200" alt="Lights" onclick="myFunction(this);">
+              </div>
+              <div class="column">
+                <img src="/static/images/biceps curl.jpg" width="200" alt="Lights" onclick="myFunction(this);">
+              </div>
+              <div class="column">
+                <img src="/static/images/legpress.jpg" width="200" alt="Lights" onclick="myFunction(this);">
+              </div>
+              <div class="column">
+                <img src="/static/images/chest-press.jpg" width="200" alt="Lights" onclick="myFunction(this);">
+              </div>
+          </div>
+          
+          <!-- The expanding image container -->
+          <div class="container">
+            <!-- Close the image -->
+            <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span>
+          
+            <!-- Expanded image -->
+            <img id="expandedImg" style="width:100%">
+          
+            <!-- Image text -->
+            <div id="imgtext"></div>
+          </div>
+
+
+    <script>
+        $("#search-icon").click(function() {
+  $(".nav").toggleClass("search");
+  $(".nav").toggleClass("no-search");
+  $(".search-input").toggleClass("search-active");
+});
+
+$('.menu-toggle').click(function(){
+   $(".nav").toggleClass("mobile-nav");
+   $(this).toggleClass("is-active");
+});
+    </script>
+    
+</body>
+</html>
